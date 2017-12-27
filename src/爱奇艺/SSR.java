@@ -18,6 +18,6 @@ package 爱奇艺;
 输出
 5
  */
-public class 第三题 {
+public class SSR {
 
 }

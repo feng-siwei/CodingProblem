@@ -17,7 +17,7 @@ import java.util.Scanner;
  * 
  * @author 冯思伟
  */
-public class 第一题 {
+public class 比较重复写数 {
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		while (in.hasNextLine()) {

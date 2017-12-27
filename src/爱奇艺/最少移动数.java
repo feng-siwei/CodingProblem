@@ -1,5 +1,6 @@
 package 爱奇艺;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 /*
@@ -23,21 +24,24 @@ import java.util.Scanner;
 	2
 	
  */
-public class 第四题 {
+public class 最少移动数 {
 	public static void main(String[] args) {
-		//思路至少移动,就是每一次都要找准位置,使用比较排序法
-		Scanner scanner = new Scanner(System.in);
-		while (scanner.hasNext()) {
-			int length = scanner.nextInt();
-			int []n
-			
-			
-			String string =scanner.nextLine();
-			System.out.println("这是string的内容"+string);
-			String[] strings = string.split(" ");
-			for (String string2 : strings) {
-				System.out.println(string2);
+		Scanner in = new Scanner(System.in);
+		while (in.hasNext()) {
+			int length = in.nextInt();
+			int [] arr = new int [length];
+			int [] sortArr = new int [length];
+			for (int i = 0; i < arr.length; i++) {
+				sortArr[i] = arr[i] = in.nextInt();
 			}
+			Arrays.sort(sortArr);
+			int count = 0;
+			for (int i = 0; i < arr.length; i++) {
+				if (arr[i] != sortArr[i]) {
+					count++;
+				}
+			}
+			System.out.println(count);
 		}
 	}
 }
