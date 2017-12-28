@@ -19,5 +19,7 @@ package 爱奇艺;
 5
  */
 public class SSR {
-
+ public static void main(String[] args) {
+	
+}
 }
