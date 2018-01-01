@@ -21,12 +21,8 @@ package 网易;
 	3
  */
 public class 游历魔法王国 {
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// 没懂第二排意思
 
 	}
 
