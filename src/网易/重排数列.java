@@ -33,12 +33,17 @@ public class 重排数列 {
 		//思路分析:找被4整除的, 计数1, 找到被2整除的计数0.5 如果n/2>计数 则no n/2<计数 则yes,
 		Scanner in = new Scanner(System.in);
 		String sa = in.nextLine();
-		int t = 0;
-		try {
-			t = Integer.getInteger(sa);
-		} catch (Exception e) {
-			System.out.println("请输入有效数字");
-		}
+		int t =  Integer.getInteger(sa);
+		
+//		try {
+//			System.out.println(sa);
+//			t = Integer.getInteger(sa);
+//			int a = 1;
+//			System.out.println(a);
+//		} catch (Exception e) {
+//			System.out.println(e.toString());
+//			System.out.println("请输入有效数字");
+//		}
 		
 		for (int i = 0; i < t; i++) {
 			String nString = in.nextLine();
