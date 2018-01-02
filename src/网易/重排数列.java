@@ -26,6 +26,8 @@ import java.util.Scanner;
 	输出例子1:
 	Yes
 	No
+	
+	800 924 708 872 632 718 270 806 14 606 208 380 896 664 71 963 952 169 612 251 336 720 528
  *
  */
 public class 重排数列 {
@@ -33,30 +35,34 @@ public class 重排数列 {
 		//思路分析:找被4整除的, 计数1, 找到被2整除的计数0.5 如果n/2>计数 则no n/2<计数 则yes,
 		Scanner in = new Scanner(System.in);
 		String sa = in.nextLine();
-		int t =  Integer.getInteger(sa);
-		
-//		try {
-//			System.out.println(sa);
-//			t = Integer.getInteger(sa);
-//			int a = 1;
-//			System.out.println(a);
-//		} catch (Exception e) {
-//			System.out.println(e.toString());
-//			System.out.println("请输入有效数字");
-//		}
+		int t = 0 ;
+		try {
+			t = Integer.parseInt(sa);
+		} catch (Exception e) {
+			System.out.println("请输入有效数列的个数t(1 ≤ t ≤ 10)");
+		}
 		
 		for (int i = 0; i < t; i++) {
 			String nString = in.nextLine();
-			int n = Integer.getInteger(nString);
+			int n = Integer.parseInt(nString);
+			//如果n=1 ,数列A长度为1 不存在A[i + 1],所以输出no
+			/*
+			但貌似题不是这么想的测试用例
+			1
+			494
+			测试是通过的输出yes
 			if (n == 1) {
 				System.out.println("No");
+				//将下一排数据读取
+				in.nextLine();
 				continue; 
 			}
+			*/
 			String AString = in.nextLine();
 			String[] As = AString.split(" ");
 			double count = 0;
 			for (String string : As) {
-				int a = Integer.getInteger(string);
+				int a = Integer.parseInt(string);
 				if (a % 4 == 0) {
 					count ++;
 				}else if (a % 2 == 0) {
