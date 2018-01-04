@@ -86,18 +86,22 @@ public class 合唱 {
 		}
 		System.out.println("b的难度"+bNanDu);
 		
-		System.out.println("把13移下来");
-		a.remove(1);
+		System.out.println("把24,13移下来");
+		a.remove(0);
+		a.remove(0);
 		b.add(0, new Integer(13));
+		b.add(0, new Integer(24));
 		System.out.println("a的值:");
 		for (Integer integer : a) {
 			System.out.print(integer+" ");
 		}
+		aNanDu = getNanDu(a);
 		System.out.println("a的难度"+aNanDu);
 		System.out.println("b的值:");
 		for (Integer integer : b) {
 			System.out.print(integer+" ");
 		}
+		bNanDu = getNanDu(b);
 		System.out.println("b的难度"+bNanDu);
 	}
 
