@@ -27,6 +27,7 @@ import java.util.Scanner;
  */
 
 public class 字符串碎片 {
+//	方法一,垃圾的简单方法
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		while (in.hasNext()) {
@@ -56,5 +57,10 @@ public class 字符串碎片 {
 			System.out.println(String.format("%.2f", (double)sum/counts.size()));
 		}
 	}
-
+//	方法二 思路，用字符串长度除以去重字符串长度。去重用正则,效率高
+//	此处就单独写一个去除连续重复的正则方法
+	public static String wipeRepetitive(String s) {
+		s = s.replaceAll("(.)\\1+", "$1");
+		return s;
+	}
 }
