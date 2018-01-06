@@ -24,6 +24,7 @@ import java.util.Scanner;
 	122
  */
 public class 魔法币 {
+//	方法一,二进制替代法,效率最高
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		while (in.hasNext()) {
@@ -34,6 +35,29 @@ public class 魔法币 {
 			sa = sa.replace('0', '1');
 			System.out.println(sa);
 		}
+		
+	}
+//	方法二,反向递归法
+	public static void two(String[] args) {
+		Scanner sc = new Scanner(System.in);
+        StringBuffer sb = new StringBuffer();
+        StringBuffer sb1 = new StringBuffer();
+        int b = sc.nextInt();
+        while (b > 0) {
+            if (b % 2 == 0) {
+                sb.append("2");
+                b = (b - 2) / 2;
+            } else {
+                sb.append("1");
+                b = (b - 1) / 2;
+            }
+        }
+        char[] arrc = sb.toString().toCharArray();
+        for (int i = sb.length() - 1; i >= 0; i--) {
+            sb1.append(arrc[i]);
+        }
+ 
+        System.out.println(sb1);
 		
 	}
 }
