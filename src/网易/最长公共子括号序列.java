@@ -32,7 +32,7 @@ package 网易;
  */
 public class 最长公共子括号序列 {
 	public static void main(String[] args) {
-		
+//		根据题意，要想使得 LCS 最大，删去任意一个字符即可获得 LCS = |s| - 1 ，再把该字符插到与原来不同的任意位置可以维持原长度，而不影响 LCS 的计算。
 
 	}
 
