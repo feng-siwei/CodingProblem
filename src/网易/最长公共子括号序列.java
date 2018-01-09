@@ -1,4 +1,10 @@
 package 网易;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
 /*
  * 一个合法的括号匹配序列被定义为:
 	1. 空串""是合法的括号序列
@@ -32,8 +38,73 @@ package 网易;
  */
 public class 最长公共子括号序列 {
 	public static void main(String[] args) {
-//		根据题意，要想使得 LCS 最大，删去任意一个字符即可获得 LCS = |s| - 1 ，再把该字符插到与原来不同的任意位置可以维持原长度，而不影响 LCS 的计算。
+		/*
+		 * 根据题意，要想使得 LCS 最大，删去任意一个字符即可获得 LCS = |s| - 1 ，
+		 * 再把该字符插到与原来不同的任意位置可以维持原长度，所以只能改变一个字符的位置。
+		 * 因此最暴力的做法是枚举每个字符，把它插入到任意位置，判合法，去重，累计。
+		 */	
+		Scanner in = new Scanner(System.in);
+		while (in.hasNext()) {
+			Set<String> set = new HashSet<>();
+			String str = in.nextLine();
+			char[] strs = str.toCharArray();
+			//使用list提高数组插入效率
+			ArrayList<Character>strList = new ArrayList<>();
+			
+			StringBuilder sb = new StringBuilder();
+			
+			for (char c : strs) {
+				strList.add(c);
+			}
+			for (int i = 0; i < strs.length; i++) {
+				char c = strList.get(i);
+				strList.remove(i);
+				for (int j = 0; j < strs.length; j++) {
+					strList.add(j, c);
+					
+					sb.delete( 0, sb.length());					
+					for (Character character : strList) {
+						sb.append(character);
+					}
+					
+					set.add(sb.toString());
+					strList.remove(j);
+				}
+				//还原list
+				strList.add(i,c);
+			}
+			
+			int count = 0;
+			for (String s : set) {
+				if (isValid(s)) {
+//					System.out.println(s);
+					count++;
+				}
+			}
+			System.out.println(count-1);
+		}
 
 	}
+	/**
+	 * 判断括号字符串是否合法
+	 * @return
+	 */
+	private static boolean isValid(String str) {
+		int v = 0;
+		char [] strs = str.toCharArray();
+		for (int i = 0; i < str.length()&&v>=0; i++) {
+			
+			if (strs[i]=='(') {
+				v++;
+			}else if (strs[i] == ')') {
+				v--;
+			}
+		}
+		if (v == 0) {
+			return true;
+		}
+		return false;
+	}
+	
 
 }
