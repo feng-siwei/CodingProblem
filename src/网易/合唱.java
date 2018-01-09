@@ -1,7 +1,5 @@
 package 网易;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /*
@@ -28,96 +26,37 @@ import java.util.Scanner;
  */
 public class 合唱 {
 	public static void main(String[] args) {
+		/*
+		 * 这是一个动态规划题
+		 */
 		Scanner in = new Scanner(System.in);
-		String sa = in.nextLine();
-		int n = 0 ;
-		try {
-			n = Integer.parseInt(sa);
-		} catch (Exception e) {
-			System.out.println("请输入有效数列的个数t(1 ≤ t ≤ 10)");
-		}
-		String arrString = in.nextLine();
-		String[] arrStr = arrString.split(" ");
-		int [] arr = new int[arrStr.length];
-		for (int i = 0; i < arrStr.length; i++) {
-			arr[i] = Integer.parseInt(arrStr[i]);
-		}
-		List<Integer> a = new ArrayList<>();
-		List<Integer> b = new ArrayList<>();
-		for (int i = 0; i < n; i++) {
-			if (a.size() == 0) {
-				a.add(arr[0]);
-				continue;
-			}
-			if (b.size() == 0) {
-				try {
-					if (Math.abs(a.get(a.size()-1)-arr[i]) <= Math.abs(arr[i]-arr[i+1])) {
-						a.add(arr[i]);
-					}else {
-						b.add(arr[i]);
-					}
-					continue;
-				} catch (Exception e) {
-					// 有可能发生数字下标越界,即将最后的一个放入b中
-					b.add(arr[i]);
-				}
-			}
-			//当a,b都有值后就简单了,直接比较谁简单谁唱就ok
-			if (Math.abs(a.get(a.size()-1)-arr[i]) <= Math.abs(b.get(b.size()-1)-arr[i])) {
-				a.add(arr[i]);
-			}else {
-				b.add(arr[i]);
-			}
-		}
-		//统计结果 
-		int aNanDu = getNanDu(a);
-		int bNanDu = getNanDu(b);
-
-		System.out.println(aNanDu+bNanDu);
-		
-		System.out.println("a的值:");
-		for (Integer integer : a) {
-			System.out.print(integer+" ");
-		}
-		System.out.println("a的难度"+aNanDu);
-		System.out.println("b的值:");
-		for (Integer integer : b) {
-			System.out.print(integer+" ");
-		}
-		System.out.println("b的难度"+bNanDu);
-		
-		System.out.println("把24,13移下来");
-		a.remove(0);
-		a.remove(0);
-		b.add(0, new Integer(13));
-		b.add(0, new Integer(24));
-		System.out.println("a的值:");
-		for (Integer integer : a) {
-			System.out.print(integer+" ");
-		}
-		aNanDu = getNanDu(a);
-		System.out.println("a的难度"+aNanDu);
-		System.out.println("b的值:");
-		for (Integer integer : b) {
-			System.out.print(integer+" ");
-		}
-		bNanDu = getNanDu(b);
-		System.out.println("b的难度"+bNanDu);
+        while (in.hasNext()) {
+            int len = in.nextInt();
+            int[] arr = new int[len];
+            for (int i = 0; i < len; ++i) {
+                arr[i] = in.nextInt();
+            }
+            if (len < 3) {
+                System.out.println("0");
+            } else {
+                int[][] dp = new int[len][len];
+                int[] acc = new int[len];
+                dp[0][0] = 0 - Math.abs(arr[1] - arr[0]);
+                for (int i = 1; i < len; ++i) {
+                    acc[i] = acc[i - 1] + Math.abs(arr[i] - arr[i - 1]);
+                    dp[i][i - 1] = acc[i - 1];
+                    for (int j = 0; j < i - 1; ++j) {
+                        dp[i][j] = dp[i - 1][j] + acc[i] - acc[i - 1];
+                        dp[i][i - 1] = Math.min(dp[i][i - 1], dp[i - 1][j] + Math.abs(arr[i] - arr[j]));
+                    }
+                }
+                int min = Integer.MAX_VALUE;
+                for (int j = 0; j < len - 1; ++j) {
+                    min = Math.min(min, dp[len - 1][j]);
+                }
+                System.out.println(min);
+            }
+        }
 	}
-
-	/**
-	 * 得到集合合唱难度
-	 * @param list 集合 
-	 * @return 难度
-	 */
-	private static int getNanDu(List<Integer> list) {
-		Integer v = list.get(0);
-		int nanDu = 0;
-		for (Integer integer : list) {
-			nanDu += Math.abs(integer - v );
-			v = integer;
-		}
-		return nanDu;
-	}
-
+      
 }
