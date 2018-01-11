@@ -58,8 +58,16 @@ public class 字符串碎片 {
 		}
 	}
 //	方法二 思路，用字符串长度除以去重字符串长度。去重用正则,效率高
-//	此处就单独写一个去除连续重复的正则方法
-	public static String wipeRepetitive(String s) {
+	public static void two(String[] args) {
+		Scanner in = new Scanner(System.in);
+		while (in.hasNext()) {
+			String sa = in.nextLine();
+			System.out.println(String.format("%.2f", (double)sa.length()/wipeRepetitive(sa).length()));
+		}
+	}
+			
+//	去除连续重复的正则方法
+	private static String wipeRepetitive(String s) {
 		s = s.replaceAll("(.)\\1+", "$1");
 		return s;
 	}
