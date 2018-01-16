@@ -1,8 +1,8 @@
-package 剑指offer;
+package 剑指offer.重复数;
 
 import java.util.HashSet;
 
-public class 数组中的重复数 {
+public class 数组中的重复数HashSet解决 {
 	public static void main(String[] args) {
 		int [] arr ={1,2,3,6,5,3};
 		System.out.println(duplicate(arr));
