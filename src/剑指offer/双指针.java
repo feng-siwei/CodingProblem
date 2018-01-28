@@ -7,16 +7,21 @@ import java.util.ListIterator;
 public class 双指针 {
 	public static void main(String[] args) {
 		List<Integer> intList = new LinkedList<>();
-		ListIterator<Integer> iterator =intList.listIterator();
-		ListIterator<Integer> iterator2 = intList.listIterator();
+		
 		
 		for (int i = 0; i < 100; i++) {
 			intList.add(i);		
 		}
 		
-//		for (int i = 0; i < 3; i++) {
-//			iterator.next();
-//		}
+		
+		
+		
+		ListIterator<Integer> iterator =intList.listIterator();
+		ListIterator<Integer> iterator2 = intList.listIterator();
+		
+		for (int i = 0; i < 3; i++) {
+			iterator.next();
+		}
 		
 		while (iterator.hasNext()) {
 			Integer integer = (Integer) iterator.next();
