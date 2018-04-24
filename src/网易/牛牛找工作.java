@@ -55,6 +55,7 @@ public class 牛牛找工作 {
             		workMap.put(di, pi);
 				}
 			}
+//           workMap中的pi重小到大排序 
             int value = 0; 
             for (Map.Entry<Integer, Integer> work : workMap.entrySet()) {
 				if (work.getValue()<value) {
